@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h3>当月薪水</h3>
+    <meter min="0" max="100000" low="3000" high="20000" optimum="90000" value="0" id="m3" > 
+    </meter>
+    <script>  
+    //定时器+刻度尺 实现一个可以动态前进刻度尺
+    //注意：每次修改当前值 +500 1000
+    //     修改时间  1000   100ms 50ms
+    //1:获取元素
+    var m3 = document.getElementById("m3");
+    //2:创建变量保存 value
+    var v = 0;
+    //3:创建定时器 
+    var t = setInterval(function(){
+      v += 1000;
+      m3.value = v;
+      if(v>99999){clearInterval(t)}
+    },100);
+    //3.1 修改value值 
+    //3.2 判断当value值大于 999999 停止
+    </script>
+</body>
+</html>

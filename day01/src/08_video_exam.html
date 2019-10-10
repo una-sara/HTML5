@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: #fff;
+      text-align: center;
+    }
+    .container{
+      position: relative;
+    }
+    .ctrl{
+      position: absolute;
+      left:50%;
+      top:50%;
+      margin-top:-60px;
+      margin-left:-60px;
+    }
+    .ctrl img{
+      width:120px;
+      height:120px;
+    }
+    /* onplay onpause*/
+    .ad{
+      position: absolute;
+      width:400px;
+      height:300px;
+      left:50%;
+      top:50%;
+      margin-left:-200px;
+      margin-top:-150px;
+    }
+  </style>
+</head>
+<body>
+   <!--最外层父元素-->
+   <div class="container">
+      <!--视频元素-->
+      <video src="res/x.mp4" id="v3"></video>
+      <!--广告-->
+      <img src="res/ad.png" class="ad"/>
+      <!--图片按钮-->
+      <!--a 鼠标移入 变小手形状-->
+      <!--a 绑定点击事件-->
+      <a class="ctrl">
+       <img src="res/play.png" />
+      </a>
+   </div>
+   <script>
+    //1:获取父元素 视频 a  img
+    var container = document.querySelector(".container");
+    var v3 = document.getElementById("v3");
+    var ctrl = document.querySelector(".ctrl");
+    var img = document.querySelector(".ctrl img");
+    //2:为父元素绑定鼠标 进入离开操作
+    container.onmouseenter = function(){
+      ctrl.style.display = "block";
+    }
+    container.onmouseleave = function(){
+      ctrl.style.display = "none";
+    }
+    //3:为ctrl绑定点击事件 
+    ctrl.onclick = function(e){
+     //3.1:阻止事件默认行为 a submit image button
+     e.preventDefault();
+     //3.2:判断当前视频暂停状态true
+     if(v3.paused){
+        //3.3:播放 切换图片
+        v3.play();
+        img.src = "res/pause.png";
+     }else{
+        //3.4:暂停 切换图片
+        v3.pause();
+        img.src = "res/play.png";
+     }
+    }
+    //4: 广告显示与隐藏
+    var ad = document.querySelector(".ad")
+    v3.onplay = function(){
+      ad.style.display = "none";
+    }
+    v3.onpause = function(){
+      ad.style.display = "block";
+    }
+   </script>
+</body>
+</html>

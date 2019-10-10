@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <h3>进度条</h3>
+    <h3>左右晃动进度条</h3>
+    <progress></progress>
+    <h3>具有指定进度值的进度条</h3>
+    <progress value="0" id="p3"/>
+    <script>
+       //练习:使用定时器+进度条实现一个可以动态
+       //前进的前度条到 100%停止
+       //定时器 1s 修改value+0.1  到1结束
+       //1:获取所有操作元素
+       var p3 = document.getElementById("p3");
+       //2:创建变量保存value变化值0~1 0.1
+       var v = 0;
+       //3:创建定时器 1s
+       var t = setInterval(function(){
+         //3.1:修改value值 + 0.1
+         v += 0.1;
+         p3.value = v;
+         //3.2:如果value值大于 0.9 停止定时器
+         if(v>0.9){clearInterval(t)}
+       },300);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>播视频</h3>
+  <!--video标签 300*150-->
+  <!--video标签 x.mp4  大小-->
+  <video src="res/x.mp4" controls poster="res/p3.png" muted loop preload="metadata" id="v3"></video>
+  <button id="btn3">播放视频</button>
+  <button id="btn4">暂停播放</button>
+  <script>
+    //1:获取视频与二个按钮元素 
+    var v3 = document.getElementById("v3");
+    var btn3 = document.getElementById("btn3");
+    var btn4 = document.getElementById("btn4");
+    v3.onplay = function(){console.log(111)}
+    v3.onpause = function(){console.log(333)}
+    //2:获取按钮一绑定点击事件 事件中播放视频
+    btn3.onclick = function(){
+      v3.play();
+    }
+    //3:获取按钮二绑定点击事件 事件中暂停播放
+    btn4.onclick = function(){
+      v3.pause();
+    }
+    //v3.volume = 0.1; //0~1
+    //v3.playbackRate= 5;//快播 
+    //v3.playbackRate = 0.3;
+    //console.log("当前视频状态:"+v3.paused);
+
+  </script>
+</body>
+</html>
